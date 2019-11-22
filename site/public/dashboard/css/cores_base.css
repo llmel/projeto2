@@ -1,0 +1,28 @@
+
+
+#sidebar,
+#a,
+#d,
+#e,
+#f,
+#q,
+#g,
+#ag,
+#r {
+	background-color: rgb(0,139,139);       /* (190,190,33) */
+	color: white;
+}
+
+#a:hover, #d:hover, #e:hover, #f:hover, #q:hover, #g:hover, #ag:hover, #r:hover{
+	background-color:rgb(173,216,230);
+}
+
+#username {
+	color:white;
+}
+
+.header {
+	background-color: rgb(0,139,139); /* cinza - rgb(73,84,105); */
+	color: white;
+}
+

@@ -1,0 +1,6 @@
+qlikview
+uipath
+pipeline de desenvolvimento
+armazenamento de imagens em sql server
+
+

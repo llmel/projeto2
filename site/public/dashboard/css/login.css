@@ -1,0 +1,27 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-image: url(../img/itil.jpg);
+	background-repeat: no-repeat;
+	background-size: 48%;
+	background-position: top right;
+	background-color: white;
+
+}
+
+#formulario {
+	margin-right: 50%;
+
+}
+
+#form_login {
+ 	background-color: white;
+}
+
+.box {
+	border-color: black;
+	border-style: solid;
+}

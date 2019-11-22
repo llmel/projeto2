@@ -1,0 +1,26 @@
+#div_titulo {
+	text-align: center;
+	color:black;
+}
+
+#div_caixa {
+	border-style: solid;
+	border-color: black;
+	margin: 10px;
+	padding: 12px;
+}
+
+#div_linha_0 {
+	border-bottom-style: solid;
+	border-bottom-color: black;
+	padding-bottom: 12px;
+}
+
+#lupa {
+	color:black;
+	font-size: 25px;
+}
+
+#btn_executar , #btn_consultar , #btn_inserir {
+	float: right;
+}

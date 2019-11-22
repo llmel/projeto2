@@ -1,0 +1,71 @@
+
+_____________________________________________________________________________________________________________________________
+
+funcional/funcionalidade são os oques do sistema tipo (tela de cadastro) 
+(user stories) = detalha mais os requisitos 
+
+
+_____________________________________________________________________________________________________________________________
+Nome do Projeto
+
+The changes Manager / GMUnDo / DUMG / 
+_____________________________________________________________________________________________________________________________
+
+
+REQUISITOS DE NEGOCIO (o que)
+
+    1.1 Monitoramento dos equipamentos e sistemas de empresas de pequeno e medio portes 24/7.
+***1.2 Possibilidade de visualizar as gmuds agendadas
+***1.3 noção das areas afetadas
+     2.1 
+     2.2
+     2.3
+     3.1 verificar se todos os sistemas afetados estão operando normalmente
+     3.2 registro das gmuds realizadas
+	3.3 
+
+REQUISITOS USUARIO (porque)
+
+*** 1.1 Garantir que todas as maquinas estejam preparadas pra receber a mudança 
+     1.2 Agendamento da GMUD
+     2.4 Comunicação a todos os stakeholders
+     2.5 visualizar as maquinas em manutenção e as ativas em dashboards separados  
+    ..... Todos os stakeholders serão notificados no inicio / meio e fim de uma gmud.
+    ..... Gerar relatório da gmud
+    ..... Site responsivo
+    ..... Site com design intuitivo
+    O sistema deve enviar alertas sobre o andamento da GMUD p/ o usuario na aplicação web
+	
+
+        REQUISITOS DE SISTEMA  (como)
+ 
+1 - Montar modelo conceitual do banco de dados
+2 - Montar modelo lógico do banco de dados
+3 - Montar scripts de implentação para mysql mssql
+4 - Comunicação entre site e banco de dados
+5 - O sistema deve manter dados sobre entrada/saida/ supervisão de GMUDs junto com dashboards de provisão.
+6 - O sistema deve permitir o usuario realizar operaçoes de consulta, inserção, atualização e agendamento de gmuds
+
+
+
+
+_____________________________________________________________________________________________________________________________
+
+dicas professor
+
+windows com software especifico
+
+lei do sac
+ela ha regras onde podemos fazer a ponte 
+
+-- hp openview 
+
+-- service now
+
+-- 
+
+_____________________________________________________________________________________________________________________________
+
+historia de usuario 
+
+ 
