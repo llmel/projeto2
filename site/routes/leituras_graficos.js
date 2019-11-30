@@ -98,17 +98,7 @@ router.get('/tempo-real', function (req, res, next) {
   });
 });
 
-// Teste
-/*
-router.get('/logar', (requisicao,resposta) => {
-  banco.conectar().then(
-    banco.sql.query('select * from teste', resultado => {
-      console.log(resultado);
-  })).then(
-  banco.sql.close()
-  )
-})
-*/
+router.get('')
 
 
 

@@ -9,7 +9,7 @@ router.post('/logar', (requisicao,resposta) => { // FFCC00
   console.log(requisicao.body)
 banco.conectar().then(() => {
     return banco.sql.query(`
-        select * from teste where login = '${requisicao.body.login}' and senha = ${requisicao.body.senha}
+        select * from funcionario where logins = '${requisicao.body.login}' and senha = '${requisicao.body.senha}'
         `);
   }).then(consulta => {
     console.log(consulta);
