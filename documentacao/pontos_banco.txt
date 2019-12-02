@@ -1,0 +1,8 @@
+tabela gmud não tem id da empresa nem da área, só do equipamento.
+campo fkmonitora, na tabela gmud, vai sempre ser atualizado com o ultimo monitoramento gerado ?
+tabela funcionario não tem relação com tabela empresa.
+só tem um campo de datahora na tabela gmud.
+
+Adicionei o campo fkempresa na tabela funcionario. É necessário atualizar o modelo conceitual e lógico.
+
+tabela equipamento tem atributo com nome com cedilha e til.
