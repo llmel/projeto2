@@ -17,7 +17,8 @@ fetch('/usuarios/logar', {
 
     response.json().then(function (resposta) {
 
-      sessionStorage.usuario = resposta.login;
+      sessionStorage.usuario = resposta.logins;
+      sessionStorage.empresa = resposta.fkempresa;
       verificarAutenticacao();
 
     });
