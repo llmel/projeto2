@@ -9,7 +9,7 @@ var myPieChart = new Chart(ctx, {
   data: {
     labels: ["Remuneração", "Controladoria", "Business Partner", "Sistemas Corporativos", "Recursos Humanos"],
     datasets: [{
-      data: [2, 10, 6, 7, 5],
+      data: [],
       backgroundColor: ['#006400','#32CD32','#7CFC00' ,'#2E8B57','#808000'],
       hoverBackgroundColor: "#C71585",
       hoverBorderColor: "rgba(234, 236, 244, 1)",
