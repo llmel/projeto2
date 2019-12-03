@@ -1,0 +1,6 @@
+Gmud iniciada 
+A GMUD 503 iniciada no horario 2019-12-02T22:22:34.707512400
+Recursos do momento do iniciada:
+CPU: 1%
+Memória: 74%
+Gmud finalizada
