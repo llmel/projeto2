@@ -4,6 +4,25 @@ var router = express.Router();
 var banco = require('../app-banco');
 // não mexa nessas 3 linhas!
 
+// GMUDS AGENDADAS
+router.get("/agendadas/:empresa",function (requisicao,resposta) {
+    console.log("Chegou no endpoint de agendadas");
+    banco.conectar().then(() => {
+      return banco.sql.query(`
+          select count (fkstatus) as gmuds_planejadas
+          from gmud g
+          join equipamento e on g.fkequipamento = e.idequipamento
+          where g.fkstatus = 1
+          and e.fkempresa = ${requisicao.params.empresa}
+        `).then(consulta => {
+          console.log(consulta);
+          resposta.send(consulta.recordset[0]);
+        }).finally(() => {
+          banco.sql.close();
+        })
+    })
+})
+
 // GMUDS EM ANDAMENTO
 router.get("/andamento/:empresa",function (requisicao,resposta) {
     console.log("Chegou no endpoint de andamento");
@@ -23,6 +42,7 @@ router.get("/andamento/:empresa",function (requisicao,resposta) {
     })
 })
 
+/*
 // AREAS AFETADAS PELAS GMUDS EM ANDAMENTO
 router.get("/a_afetadas/:empresa",function (requisicao,resposta) {
     console.log("Chegou no endpoint de afetadas");
@@ -42,6 +62,7 @@ router.get("/a_afetadas/:empresa",function (requisicao,resposta) {
         })
     })
 })
+*/
 
 // EQUIPAMENTOS AFETADOS PELAS GMUDS EM ANDAMENTO
 router.get("/e_afetados/:empresa",function (requisicao,resposta) {
@@ -179,8 +200,96 @@ router.get(`/gmud_especifica/:id`,(requisicao,resposta) => {
 })
 
 // QUAIS GMUDS EM ANDAMENTO
+router.get("/gmuds_andamento/:empresa",function (requisicao,resposta) {
+    console.log("Chegou no endpoint de quais em andamento");
+    banco.conectar().then(() => {
+      return banco.sql.query(`
+          select *
+          from gmud g
+          join equipamento e on g.fkequipamento = e.idequipamento
+          where g.fkstatus = 2
+          and e.fkempresa = ${requisicao.params.empresa}
+        `).then(consulta => {
+          console.log(consulta);
+          resposta.send(consulta.recordset);
+        }).finally(() => {
+          banco.sql.close();
+        })
+    })
+})
 
+// QUAIS GMUDS AGENDADAS
+router.get("/gmuds_agendadas/:empresa",function (requisicao,resposta) {
+    console.log("Chegou no endpoint de quais agendadas");
+    banco.conectar().then(() => {
+      return banco.sql.query(`
+          select *
+          from gmud g
+          join equipamento e on g.fkequipamento = e.idequipamento
+          where g.fkstatus = 1
+          and e.fkempresa = ${requisicao.params.empresa}
+        `).then(consulta => {
+          console.log(consulta);
+          resposta.send(consulta.recordset);
+        }).finally(() => {
+          banco.sql.close();
+        })
+    })
+})
 
+// QUAIS EQUIPAMENTOS
+router.get("/equipamentos/:empresa",function (requisicao,resposta) {
+    console.log("Chegou no endpoint de quais equipamentos");
+    banco.conectar().then(() => {
+      return banco.sql.query(`
+          select e.*
+          from afeta a
+          join equipamento e on a.fkareaafeta = e.fkareas
+          where e.fkareas in (
+              select distinct a.fkareaafetada
+              from equipamento e
+              join gmud g on g.fkequipamento = e.idequipamento
+              join afeta a on a.fkareaafeta = e.fkareas
+              where g.fkstatus = 2
+              and e.fkempresa = ${requisicao.params.empresa}
+          )
+          and e.fkempresa in (
+              select distinct a.fkempresaafetada
+              from equipamento e
+              join gmud g on g.fkequipamento = e.idequipamento
+              join afeta a on a.fkareaafeta = e.fkareas
+              where g.fkstatus = 2
+              and e.fkempresa = ${requisicao.params.empresa}
+          )
+        `).then(consulta => {
+          console.log(consulta);
+          resposta.send(consulta.recordset);
+        }).finally(() => {
+          banco.sql.close();
+        })
+    })
+})
+
+// QUAIS GMUDS CONCLUIDAS
+router.get("/b_concluidas/:empresa",function (requisicao,resposta) {
+    console.log("Chegou no endpoint de quais concluídas");
+    banco.conectar().then(() => {
+      return banco.sql.query(`
+          select *
+          from gmud g
+          join equipamento e on g.fkequipamento = e.idequipamento
+          where g.fkstatus = 3
+          and e.fkempresa = ${requisicao.params.empresa}
+          and MONTH(datahora) = MONTH(GETDATE())
+          and DAY(datahora) = DAY(GETDATE())
+        `).then(consulta => {
+          console.log(consulta);
+          resposta.send(consulta.recordset);
+        }).finally(() => {
+          banco.sql.close();
+        })
+    })
+})
 
 
 // não mexa nesta linha!

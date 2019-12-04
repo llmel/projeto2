@@ -76,7 +76,22 @@ function gmuds_concluidas () {
 		} else {
 			console.log("Deu ruim");
 		}
+    gmuds_agendadas();
 	})
+}
+
+function gmuds_agendadas () {
+  fetch(`/leituras/agendadas/${sessionStorage.empresa}`,{
+    method: "GET"
+  }).then(resposta => {
+    if (resposta.ok) {
+      resposta.json().then(resultado => {
+        div_gmuds_agendadas.innerHTML = resultado.gmuds_planejadas;
+      })
+    } else {
+      console.log("Deu ruim");
+    }
+  })
 }
 
 function sete_dias () {
@@ -85,17 +100,17 @@ function sete_dias () {
 	}).then(resposta => {
 		if (resposta.ok) {
 			resposta.json().then(resultado => {
-				for (c = 0;c < resultado.length; c++) {
+        for (c = 0;c < resultado.length; c++) {
 					tbl_sete_dias.innerHTML += `
 						<tr>
-							<td id="idgmud">${resultado[c].id}</td>
+							<td id="idgmud+${c}">${resultado[c].id}</td>
 	                        <td>${resultado[c].area_afetada}</td>
 	                        <td>${resultado[c].motivo}</td>
 	                        <td>${resultado[c].categoria_gmud}</td>
 	                        <td>${resultado[c].data_conclusao}</td>
 	                        <td>
 	                          <div class="btn-group">
-	                            <button onclick="detalhar_gmud()" class="btn btn-success" href="#"><i class="fas fa-search"></i></i></button>
+	                            <button onclick="detalhar_gmud(${resultado[c].id})" class="btn btn-success" href="#"><i class="fas fa-search"></i></i></button>
 	                            
 	                          </div>
 	                        </td>
@@ -262,7 +277,7 @@ function runn () {
 	atualizar_constante();
 }
 
-function detalhar_gmud () {
+function detalhar_gmud (id) {
 	modal_detalhes_gmud.innerHTML = `
 		<div class="modal-content">
 	        <div class="modal-header">
@@ -277,7 +292,7 @@ function detalhar_gmud () {
       	</div>
       	`;
     $('#modal_aguardar').modal('show');
-    buscar_gmud_especifica(idgmud.innerHTML);
+    buscar_gmud_especifica(id);
 }
 
 function buscar_gmud_especifica (id) {
@@ -363,4 +378,172 @@ function mes_area_plotar (dadoss) {
 	    cutoutPercentage: 80,
 	  	},
 	});
+}
+
+function detalhar_andamento () {
+  modal_detalhes_gmud.innerHTML = `
+    <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="TituloModalCentralizado">Detalhes da GMUD</h5>
+          </div>
+          <div id="conteudo_modal"class="modal-body">
+            <img style="width:50%;margin-left:140px" src="img/aguarde3.gif">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+        `;
+    $('#modal_aguardar').modal('show');
+    buscar_gmuds_andamento();
+}
+
+function buscar_gmuds_andamento () {
+  fetch(`/leituras/gmuds_andamento/${sessionStorage.empresa}`,{
+    method:"GET"
+  }).then(resposta => {
+    if (resposta.ok) {
+      resposta.json().then(resultado => {
+        conteudo_modal.innerHTML = ""; 
+        for (c = 0; c < resultado.length;c++) {
+          conteudo_modal.innerHTML += `
+          GMUD ${resultado[c].idGmud} <br><br>
+
+          Prioridade: ${resultado[c].prioridade} <br>
+          Motivo: ${resultado[c].motivo} <br>
+          Categoria: ${resultado[c].categoria} <br>
+          Equipamento: ${resultado[c].descrição} <br><br>
+        `
+        }
+      })
+    } else {
+      console.log("Errooooo");
+    }
+  })
+}
+
+function detalhar_agendadas () {
+  modal_detalhes_gmud.innerHTML = `
+    <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="TituloModalCentralizado">Detalhes da GMUD</h5>
+          </div>
+          <div id="conteudo_modal"class="modal-body">
+            <img style="width:50%;margin-left:140px" src="img/aguarde3.gif">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+        `;
+    $('#modal_aguardar').modal('show');
+    buscar_gmuds_agendadas();
+}
+
+function buscar_gmuds_agendadas () {
+  fetch(`/leituras/gmuds_agendadas/${sessionStorage.empresa}`,{
+    method:"GET"
+  }).then(resposta => {
+    if (resposta.ok) {
+      resposta.json().then(resultado => {
+        conteudo_modal.innerHTML = ""; 
+        for (c = 0; c < resultado.length;c++) {
+          conteudo_modal.innerHTML += `
+          GMUD ${resultado[c].idGmud} <br><br>
+
+          Prioridade: ${resultado[c].prioridade} <br>
+          Motivo: ${resultado[c].motivo} <br>
+          Categoria: ${resultado[c].categoria} <br>
+          Equipamento: ${resultado[c].descrição} <br><br>
+        `
+        }
+      })
+    } else {
+      console.log("Errooooo");
+    }
+  })
+}
+
+function detalhar_equipamentos () {
+  modal_detalhes_gmud.innerHTML = `
+    <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="TituloModalCentralizado">Detalhes da GMUD</h5>
+          </div>
+          <div id="conteudo_modal"class="modal-body">
+            <img style="width:50%;margin-left:140px" src="img/aguarde3.gif">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+        `;
+    $('#modal_aguardar').modal('show');
+    buscar_equipamentos();
+}
+
+function buscar_equipamentos () {
+  fetch(`/leituras/equipamentos/${sessionStorage.empresa}`,{
+    method:"GET"
+  }).then(resposta => {
+    if (resposta.ok) {
+      resposta.json().then(resultado => {
+        conteudo_modal.innerHTML = ""; 
+        for (c = 0; c < resultado.length;c++) {
+          conteudo_modal.innerHTML += `
+          Equipamento ${resultado[c].idEquipamento} <br><br>
+
+          Relevância: ${resultado[c].relevancia} <br>
+          IP: ${resultado[c].ipMaquina} <br>
+          Descrição: ${resultado[c].descrição} <br><br>
+        `
+        }
+      })
+    } else {
+      console.log("Errooooo");
+    }
+  })
+}
+
+
+function detalhar_concluidas () {
+  modal_detalhes_gmud.innerHTML = `
+    <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="TituloModalCentralizado">Detalhes da GMUD</h5>
+          </div>
+          <div id="conteudo_modal"class="modal-body">
+            <img style="width:50%;margin-left:140px" src="img/aguarde3.gif">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+        `;
+    $('#modal_aguardar').modal('show');
+    buscar_concluidas();
+}
+
+function buscar_concluidas () {
+  fetch(`/leituras/b_concluidas/${sessionStorage.empresa}`,{
+    method:"GET"
+  }).then(resposta => {
+    if (resposta.ok) {
+      resposta.json().then(resultado => {
+        conteudo_modal.innerHTML = ""; 
+        for (c = 0; c < resultado.length;c++) {
+          conteudo_modal.innerHTML += `
+          GMUD ${resultado[c].idGmud} <br><br>
+
+          Prioridade: ${resultado[c].prioridade} <br>
+          Motivo: ${resultado[c].motivo} <br>
+          Categoria: ${resultado[c].categoria} <br>
+          Equipamento: ${resultado[c].descrição} <br><br>
+        `
+        }
+      })
+    } else {
+      console.log("Errooooo");
+    }
+  })
 }
