@@ -97,6 +97,8 @@ router.get("/e_afetados/:empresa",function (requisicao,resposta) {
     })
 })
 
+// and DAY(datahora) = DAY(GETDATE())
+// and MONTH(datahora) = MONTH(GETDATE())
 // GMUDS CONCLUIDAS NO DIA ATUAL
 router.get("/concluidas/:empresa",function (requisicao,resposta) {
     console.log("Chegou no endpoint de concluidas");
@@ -107,8 +109,8 @@ router.get("/concluidas/:empresa",function (requisicao,resposta) {
           join equipamento e on g.fkequipamento = e.idequipamento
           where g.fkstatus = 3
           and e.fkempresa = ${requisicao.params.empresa}
-          and MONTH(datahora) = MONTH(GETDATE())
-          and DAY(datahora) = DAY(GETDATE())
+          
+          
         `).then(consulta => {
           console.log(consulta);
           resposta.send(consulta.recordset[0]);
