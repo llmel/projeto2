@@ -269,7 +269,7 @@ function finalizar_aguardar () {
 }
 
 function atualizar_constante () {
-	setTimeout(runn, 60000);
+	setTimeout(runn, 30000);
 }
 
 function runn () {
