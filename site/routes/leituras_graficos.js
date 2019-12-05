@@ -162,6 +162,8 @@ router.get("/mes_a_mes/:empresa",(requisicao,resposta) => {
   })
 })
 
+// where MONTH(g.datahora) = MONTH(GETDATE())-1
+// and e.fkempresa = ${requisicao.params.empresa}
 // GMUDS POR AREA NO ULTIMO MES
 router.get("/mes_area/:empresa",(requisicao,resposta) => {
   console.log("Chegou no endpoint de mes_area");
@@ -171,8 +173,6 @@ router.get("/mes_area/:empresa",(requisicao,resposta) => {
         from gmud g
         join equipamento e on e.idequipamento = g.fkequipamento
         join areas a on e.fkareas = a.idareas
-        where MONTH(g.datahora) = MONTH(GETDATE())-1
-        and e.fkempresa = ${requisicao.params.empresa}
         group by a.nomearea
       `).then(resultado => {
         console.log(resultado);
@@ -282,8 +282,6 @@ router.get("/b_concluidas/:empresa",function (requisicao,resposta) {
           join equipamento e on g.fkequipamento = e.idequipamento
           where g.fkstatus = 3
           and e.fkempresa = ${requisicao.params.empresa}
-          and MONTH(datahora) = MONTH(GETDATE())
-          and DAY(datahora) = DAY(GETDATE())
         `).then(consulta => {
           console.log(consulta);
           resposta.send(consulta.recordset);
@@ -292,6 +290,8 @@ router.get("/b_concluidas/:empresa",function (requisicao,resposta) {
         })
     })
 })
+
+
 
 
 // não mexa nesta linha!

@@ -218,8 +218,8 @@ function mes_a_mes_plotar (dadoss) {
       yAxes: [{
         ticks: {
           min: 0,
-          max: 100,
-          maxTicksLimit: 20,
+          max: 10,
+          maxTicksLimit: 10,
           padding: 20,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
@@ -329,6 +329,12 @@ function mes_area_buscar () {
     			for (c = 0;c < resultado.length;c++) {
     				labels.push(resultado[c].areas);
     				qtd_by_areas.push(resultado[c].qtd_by_area);
+            tbl_por_areas.innerHTML += `         
+              <tr>
+                <td>${resultado[c].areas}</td>
+                <td>${resultado[c].qtd_by_area}</td>
+              </tr>
+            `
     			}
     			console.log(labels);
     			console.log(qtd_by_areas);
@@ -547,3 +553,6 @@ function buscar_concluidas () {
     }
   })
 }
+
+
+
