@@ -1,0 +1,8 @@
+Dentro da área de tecnologia da informação, temos a sustentação de sistemas. Para dar sustentação em sistemas em produção, existem boas práticas para que os impactos sejam mínimos para o usuário. Essas boas práticas para a área de T.I são definidas pelo ITIL, que é uma biblioteca de recomendações que as grandes empresas criaram para convencionar o gerenciamento de serviços de T.I. Uma parte destas bibliotecas refere-se à gerencimamento de mudanças. 
+
+
+Muitas empresas tentam implementar o processo de GMUD em seus serviços, mas acabam utilizando processos complicados e manuais, e trazem mais dificuldades do que facilidades na sustentação de um sistema em produção.
+
+
+A aplicação que desenvolvemos busca solucionar os problemas mais comuns das empresas ao tentar implementar gestão de mudanças em seus serviços de T.I, automatizando o processo de mudanças e disponibilizando dados em Dashboard para auxiliar a equipe de T.I em decisões estratégicas e monitoramento em tempo real.
+

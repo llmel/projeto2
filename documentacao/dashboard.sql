@@ -76,4 +76,46 @@ from gmud g
 join equipamento e on g.fkequipamento = e.idequipamento
 where idgmud = 500
 
+-- QUAIS GMUDS PLANEJADAS
+select *
+from gmud g
+join equipamento e on g.fkequipamento = e.idequipamento
+where g.fkstatus = 1
+and e.fkempresa = 10000
 
+-- QUAIS GMUDS EM ANDAMENTO
+select *
+from gmud g
+join equipamento e on g.fkequipamento = e.idequipamento
+where g.fkstatus = 2
+and e.fkempresa = 10000
+
+-- QUAIS EQUIPAMENTOS PARADOS
+select e.*
+from afeta a
+join equipamento e on a.fkareaafeta = e.fkareas
+where e.fkareas in (
+    select distinct a.fkareaafetada
+    from equipamento e
+    join gmud g on g.fkequipamento = e.idequipamento
+    join afeta a on a.fkareaafeta = e.fkareas
+    where g.fkstatus = 2
+    and e.fkempresa = 10000
+)
+and e.fkempresa in (
+    select distinct a.fkempresaafetada
+    from equipamento e
+    join gmud g on g.fkequipamento = e.idequipamento
+    join afeta a on a.fkareaafeta = e.fkareas
+    where g.fkstatus = 2
+    and e.fkempresa = 10000
+)
+
+-- QUAIS GMUDS CONCLUIDAS
+select *
+from gmud g
+join equipamento e on g.fkequipamento = e.idequipamento
+where g.fkstatus = 3
+and e.fkempresa = 10000
+and MONTH(datahora) = MONTH(GETDATE())
+and DAY(datahora) = DAY(GETDATE())
