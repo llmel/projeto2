@@ -1,0 +1,30 @@
+ -- Mensagem enviada no Slack com sucesso --
+-- Conexão realizada com o banco com sucesso --
+-- Status da GMUD foi atualizado para em execução --
+-- Dados da maquina captados com sucesso -- 
+-- Informações da maquina foram adicionadas ao banco --
+-- Conexão com banco encerrada --
+-- Mensagem de finalização foi enviada pelo Slack com sucesso --
+-- Conexão com o banco realizada com sucesso --
+-- Informações no banco foram atualizadas com sucesso --
+-- Conexão com o banco foi finalizada --
+ -- Mensagem enviada no Slack com sucesso --
+-- Conexão realizada com o banco com sucesso --
+-- Status da GMUD foi atualizado para em execução --
+-- Dados da maquina captados com sucesso -- 
+-- Informações da maquina foram adicionadas ao banco --
+-- Conexão com banco encerrada --
+-- Mensagem de finalização foi enviada pelo Slack com sucesso --
+-- Conexão com o banco realizada com sucesso --
+-- Informações no banco foram atualizadas com sucesso --
+-- Conexão com o banco foi finalizada --
+ -- Mensagem enviada no Slack com sucesso --
+-- Conexão realizada com o banco com sucesso --
+-- Status da GMUD foi atualizado para em execução --
+-- Dados da maquina captados com sucesso -- 
+-- Informações da maquina foram adicionadas ao banco --
+-- Conexão com banco encerrada --
+-- Mensagem de finalização foi enviada pelo Slack com sucesso --
+-- Conexão com o banco realizada com sucesso --
+-- Informações no banco foram atualizadas com sucesso --
+-- Conexão com o banco foi finalizada --

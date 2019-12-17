@@ -131,7 +131,6 @@ router.get("/sete_dias/:empresa",(requisicao,resposta) => {
       join areas a on e.fkareas = a.idareas
       where g.fkstatus = 3
       and e.fkempresa = ${requisicao.params.empresa}
-      and datahora >= GETDATE()-7 
       `).then(resultado => {
         console.log(resultado);
         resposta.send(resultado.recordset);
